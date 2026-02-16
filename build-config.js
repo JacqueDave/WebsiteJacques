@@ -12,39 +12,31 @@ const PUBLIC_KEYS = [
 ];
 
 const readEnvFile = () => {
-  if (!fs.existsSync(ENV_PATH)) {
-    console.error("Missing .env. Copy .env.example and fill values.");
-    process.exit(1);
+  let fileEnv = {};
+
+  if (fs.existsSync(ENV_PATH)) {
+    const raw = fs.readFileSync(ENV_PATH, "utf8");
+    raw.split(/\r?\n/).forEach((line) => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) return;
+
+      const index = trimmed.indexOf("=");
+      if (index === -1) return;
+
+      const key = trimmed.slice(0, index).trim();
+      let value = trimmed.slice(index + 1).trim();
+
+      if ((value.startsWith("\"") && value.endsWith("\"")) ||
+        (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+
+      fileEnv[key] = value;
+    });
   }
 
-  const raw = fs.readFileSync(ENV_PATH, "utf8");
-  const env = {};
-
-  raw.split(/\r?\n/).forEach((line) => {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith("#")) {
-      return;
-    }
-
-    const index = trimmed.indexOf("=");
-    if (index === -1) {
-      return;
-    }
-
-    const key = trimmed.slice(0, index).trim();
-    let value = trimmed.slice(index + 1).trim();
-
-    if (
-      (value.startsWith("\"") && value.endsWith("\"")) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-
-    env[key] = value;
-  });
-
-  return env;
+  // Merge file env with process.env (system vars take precedence)
+  return { ...fileEnv, ...process.env };
 };
 
 const env = readEnvFile();

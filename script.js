@@ -1,5 +1,6 @@
 // Runtime config is injected by config.js (generated from .env).
 const runtimeConfig = window.RUNTIME_CONFIG || {};
+
 const stripeCheckoutUrl = runtimeConfig.STRIPE_CHECKOUT_URL || "";
 const supabaseUrl = runtimeConfig.SUPABASE_URL || "";
 const supabaseKey = runtimeConfig.SUPABASE_ANON_KEY || "";
