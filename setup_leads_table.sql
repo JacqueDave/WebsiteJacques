@@ -15,10 +15,3 @@ ON public.leads
 FOR INSERT 
 TO anon 
 WITH CHECK (true);
-
--- Create a policy that allows anyone (anon key) to SELECT data (optional, useful for debugging)
--- CREATE POLICY "Enable select for everyone" 
--- ON public.leads 
--- FOR SELECT 
--- TO anon 
--- USING (true);

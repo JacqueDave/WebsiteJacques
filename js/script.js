@@ -7,6 +7,7 @@ const supabaseKey = runtimeConfig.SUPABASE_ANON_KEY || "";
 
 const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
 
+// ── Stripe Links ──
 const applyStripeLinks = () => {
   const stripeLinks = document.querySelectorAll("[data-stripe-link]");
 
@@ -20,10 +21,10 @@ const applyStripeLinks = () => {
   });
 };
 
+// ── Lead Forms (Supabase) ──
 const bindLeadForms = () => {
   const leadForms = document.querySelectorAll("[data-lead-form]");
 
-  // Supabase + Resend wiring
   leadForms.forEach((form) => {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -63,5 +64,49 @@ const bindLeadForms = () => {
   });
 };
 
+// ── Scroll-triggered animations ──
+const initScrollAnimations = () => {
+  const revealElements = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .stagger");
+
+  if (!("IntersectionObserver" in window)) {
+    // Fallback: show everything immediately
+    revealElements.forEach((el) => el.classList.add("visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
+
+  revealElements.forEach((el) => observer.observe(el));
+};
+
+// ── Smooth scroll for anchor links ──
+const initSmoothScroll = () => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+};
+
+// ── Init ──
 applyStripeLinks();
 bindLeadForms();
+initScrollAnimations();
+initSmoothScroll();

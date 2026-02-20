@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leverage in the Game | Mobile Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Oswald:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b7d959",
+                        "accent-gold": "#f0c27b",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#0b0d10",
+                        "surface-dark": "#16181d",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "oswald": ["Oswald", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(183, 217, 89, 0.2);
+            color: transparent;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display selection:bg-primary selection:text-background-dark overflow-x-hidden">
+<nav class="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/95 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 bg-primary rounded flex items-center justify-center text-background-dark font-extrabold text-sm">L</div>
+<span class="font-oswald text-lg uppercase tracking-tight font-bold">Leverage</span>
+</div>
+<button class="bg-primary text-background-dark px-4 py-1.5 rounded-md font-bold text-xs uppercase tracking-wider">
+            Join
+        </button>
+</div>
+</nav>
+<section class="relative min-h-screen flex flex-col pt-12 pb-20 px-4 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/80 to-background-dark z-10"></div>
+<img alt="Atmospheric basketball court" class="w-full h-full object-cover grayscale opacity-30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6BQEASMJpGyvWBBX8rFmotijHVktiq5X9MuLhRDtMZVjnDRPjlmShPuRV254g7XmbzDjDPOOlHVxYgHas3rbDcBBr1bWbTk4OHabqGe7_GkqAcenYKhlkHDmDxN4hPw3b5OMym6mK3AaW9oS8m2rT4A40ldBa3KpDpxXWkEPOHTx1khfL4Sz6R6wlC2_GjIRke71jPk8aFdXqa9WSJkSO2NOfYJLXc_JYjiMw7Bkas3EKndOBLbAcoIFBRpXJF4E7kvQZuke-68Q"/>
+</div>
+<div class="relative z-20 w-full flex flex-col gap-10">
+<div class="space-y-6 text-center">
+<span class="text-primary font-oswald uppercase tracking-[0.2em] text-[10px] font-bold block">For serious players 16-25</span>
+<h1 class="font-oswald text-5xl font-black uppercase leading-[0.9] tracking-tighter">
+                Make Yourself <br/> <span class="text-primary italic">Useful...</span>
+</h1>
+<p class="text-lg text-slate-400 max-w-sm mx-auto font-light leading-relaxed">
+                Build the elite skill-stack that makes you impossible to bench.
+            </p>
+</div>
+<div class="relative mx-auto w-full max-w-[280px]">
+<div class="absolute -inset-4 bg-primary/20 blur-2xl rounded-full"></div>
+<div class="relative glass rounded-xl p-2 border border-white/10 transform rotate-1">
+<img alt="Guide Preview" class="rounded-lg shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH7hLXzji4IIHkgFTRvb0rYwnYsSFGUbOnJqSszt2k29KPBwhMYtknA9Rw3NL6LwCy2Le80B9FXrKuDsl3T3KNnPMgG2HMCdpicfc42Es5TNSuuruaLKfoCYLw-M1kvs6j8-0Z0pjXkWeY-P7i26Iti6liQOVCIuIuSn7tPzmdFYW_rdJBK3NgfV9eWkg7ryWajf8_B0qx8ojA46IsXDD-asw_kgjrMZBu0Z55UZwnwPToB9T_6J01c1E6UpPK7_bPeSS-F6bur44"/>
+</div>
+</div>
+<div class="w-full max-w-md mx-auto space-y-4">
+<div class="flex flex-col gap-3">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-center" placeholder="Enter your email" type="email"/>
+<button class="w-full bg-primary text-background-dark py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-white transition-all shadow-lg shadow-primary/20">
+                    Access Guide
+                </button>
+</div>
+<div class="flex items-center justify-center gap-4 py-4 border-t border-white/5">
+<img alt="Founder portrait" class="w-12 h-12 rounded-full object-cover border-2 border-accent-gold" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLLBoBiiqwJCIbY_o8MfEivyLm_8ji6gzdETtck7O-yBJzgi9S7EWIlzcAuXkf0qCMhg04koHv5zgno5nsWdHczruRtMqjC7MJx5VZ18vOHY4oy4ebbqABayCow_xgIpHSJ63GOpgoZ3O9CeCgUSVWxQ3fx-EPSEcGTEKKz0q0hONKopqxbHiZNXNr1fcYD0UY8e8Wg_gKsJDfkbnTlsgpliL19pclT4XyBoQ9FKRWJD2hb3XCFFzGofhtd6rTargS3i790iMdduI"/>
+<div class="text-left">
+<p class="font-oswald font-bold uppercase tracking-wide text-xs">Coach &amp; Founder</p>
+<p class="text-slate-500 text-[10px] uppercase">Pro Player &amp; Engineer</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-dark py-8 border-y border-white/5">
+<div class="px-4 grid grid-cols-1 gap-6 text-center">
+<div>
+<span class="text-primary font-oswald uppercase text-[10px] tracking-widest block mb-1">The Path</span>
+<span class="text-xl font-oswald font-bold uppercase">Cameroon to Pro</span>
+</div>
+<div class="border-y border-white/5 py-6">
+<span class="text-accent-gold font-oswald uppercase text-[10px] tracking-widest block mb-1">Awards</span>
+<span class="text-xl font-oswald font-bold uppercase">Defensive Honors</span>
+</div>
+<div>
+<span class="text-slate-500 font-oswald uppercase text-[10px] tracking-widest block mb-1">Education</span>
+<span class="text-xl font-oswald font-bold uppercase">Civil Engineering</span>
+</div>
+</div>
+</section>
+<section class="py-20 px-4 relative">
+<div class="absolute top-0 left-0 w-1/2 h-full bg-primary/5 blur-[80px] rounded-full"></div>
+<div class="max-w-md mx-auto">
+<div class="mb-12 text-center">
+<h2 class="font-oswald text-4xl font-black uppercase mb-3">The Evolution</h2>
+<div class="h-1 w-12 bg-primary mx-auto"></div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="glass p-8 rounded-2xl border border-white/5 relative overflow-hidden">
+<div class="text-7xl font-oswald font-black text-stroke absolute top-2 right-4 opacity-30">01</div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4">visibility_off</span>
+<h3 class="text-xl font-oswald font-bold uppercase mb-2">Invisible</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Starting from zero. The player nobody notices because you haven't defined your specific utility.</p>
+</div>
+<div class="glass p-8 rounded-2xl border border-white/5 relative overflow-hidden">
+<div class="text-7xl font-oswald font-black text-stroke absolute top-2 right-4 opacity-30">02</div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4">military_tech</span>
+<h3 class="text-xl font-oswald font-bold uppercase mb-2">Valuable</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Building your foundation. Developing a "superpower" that solves a coach's headache.</p>
+</div>
+<div class="glass p-8 rounded-2xl border border-white/5 relative overflow-hidden">
+<div class="text-7xl font-oswald font-black text-stroke absolute top-2 right-4 opacity-30">03</div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4">verified_user</span>
+<h3 class="text-xl font-oswald font-bold uppercase mb-2">Trusted</h3>
+<p class="text-slate-400 text-sm leading-relaxed">You are the "safety net." The coach knows exactly what they get when you step on the floor.</p>
+</div>
+<div class="glass p-8 rounded-2xl border border-white/5 relative overflow-hidden">
+<div class="text-7xl font-oswald font-black text-stroke absolute top-2 right-4 opacity-30">04</div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4">schedule</span>
+<h3 class="text-xl font-oswald font-bold uppercase mb-2">Minutes</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Dominating the court. Transition from specialist to star. You own the rotation flow.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-surface-dark px-4">
+<div class="max-w-md mx-auto">
+<div class="mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-gold/10 border border-accent-gold/20 mb-6">
+<span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+<span class="text-accent-gold text-[10px] font-bold uppercase tracking-widest">The Core Advantage</span>
+</div>
+<blockquote class="font-oswald text-3xl font-bold uppercase leading-tight italic mb-6">
+                "Athleticism gets you in the gym. <span class="text-primary">Leverage</span> keeps you on the floor."
+            </blockquote>
+</div>
+<div class="space-y-4">
+<h4 class="font-oswald text-lg uppercase font-bold text-slate-100 tracking-wide mb-4">The Unique Stack</h4>
+<div class="flex gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
+<span class="material-symbols-outlined text-primary">engineering</span>
+<div>
+<p class="font-bold text-sm mb-1">Structural Intelligence</p>
+<p class="text-xs text-slate-400">Civil engineering approach to defensive schemes.</p>
+</div>
+</div>
+<div class="flex gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<div>
+<p class="font-bold text-sm mb-1">ROI Focused Training</p>
+<p class="text-xs text-slate-400">Skills that actually earn consistent minutes.</p>
+</div>
+</div>
+<div class="flex gap-4 p-5 rounded-xl bg-white/5 border border-white/10">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<div>
+<p class="font-bold text-sm mb-1">Coaches Logic</p>
+<p class="text-xs text-slate-400">Speak the professional language of coaches.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4">
+<div class="max-w-md mx-auto">
+<div class="text-center mb-10">
+<h2 class="font-oswald text-4xl font-black uppercase mb-3">Proven Results</h2>
+<div class="h-1 w-12 bg-primary mx-auto"></div>
+</div>
+<div class="masonry-grid">
+<div class="masonry-item rounded-xl overflow-hidden glass relative">
+<img alt="Result image" class="w-full grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1vBp1_4WHa84DvaVEZ7USvegQW0gEBUvGR-KfLhxNABA5B-BfYBBFbLdgia3mhuj9S4gAicNOUBH5au9tzuuKkAiM_ejr3RJz5c-mh5VPj-eVMIsi3KOvE3qhndDSag4omn9SSUs1NxSDQQLNYe-GIdvINjFjDsfVjgPcrcQ5hGJY9tYODonPoMgacsUKxRNihQVXu-KxDo0co9dQT4E_5zMOTy7z8oLQ0Yc46lfn7F1pNQB4N9QIT8VhR9E8DS2hFzDl5Lih2zw"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+<p class="font-oswald font-bold uppercase text-sm">Championship Pedigree</p>
+</div>
+</div>
+<div class="masonry-item rounded-xl overflow-hidden glass">
+<img alt="Result image" class="w-full grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVbTNki8R3q-bvgpw0vXZWcjYT8lpY-BtoQuFZVarznG9So1niWnwibclyAOSczL6Q5gwH8ixMWgHbjPhUkap-KZA57XBjvaIrseatyEYVN7F8zMp6VWq92Nw5e1zaNojLjfNNoye3_X5eWKrJRrze3C_p1DEoui0zjSVdwf1PMuvIOBXRncqluN3ArBMdaPeLTj3d-LxL3RzJzpXLrKAg9ajYFaDmHVhjCgJb8nsyU6Yls-889m-eR6Y3aUA8Qtiaa6zQpaKfEg"/>
+</div>
+<div class="masonry-item rounded-xl overflow-hidden glass">
+<img alt="Result image" class="w-full grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaQUFI0BHGRvNy2UfKAd14PqjasjKl4jBGhwFLq3ts06dWNBUH-zFxq0ulvHzuAy-PrCOUETtGGVCcTgXL34948EyMi8IyHvS_N1TUAR1PnH3LWxTRTAjGipdKnUrTT0gGNvxfRV8cDh2AJI9g0b7tHj64BR3jB5e61J0K2eCHfGpgTJ3woPIAlVWrbI0X0lUewhMxcBsN_ocCCVOCQOq5IBozk__AuMh4t2K85LTvrCDjTPRhGhMk7UbVen4vpAyVnhzeM1UAVfQ"/>
+</div>
+<div class="masonry-item rounded-xl overflow-hidden glass">
+<img alt="Result image" class="w-full grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR3OYSf_qQho1sDTCPwd_R7-9eqC7uAZ5Ftt-gnhrHL_Wcx2EvKdYvy2hXSlj25epZt-RbHE6jP6ID4K-b2n-_E31Z3li7BrnPrkbX98-dIP5q0Z5g3HnE04j-v0oQMKdTq874dnW_uiCorHvuElJ3vmr8-IciBqxg23ikM9ua0PZ-MHT0TIINLRbXbKOozuEbhsnn68d5y5AiWn1uMGHnnOYE5cxIG9s3mWbqn6CTG39RuFxXcpNceyYoh0_vcrDPpUsgpKGKlKg"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-surface-dark grid-pattern">
+<div class="px-4 max-w-md mx-auto">
+<h2 class="font-oswald text-3xl font-black uppercase tracking-tight mb-10 text-center">What's Inside</h2>
+<div class="flex flex-col gap-4">
+<div class="p-6 rounded-xl bg-background-dark/80 border border-white/5">
+<h3 class="text-lg font-oswald font-bold uppercase text-primary mb-2">The Role Map</h3>
+<p class="text-slate-400 text-xs">5-factor analysis to identify your path to the starting five.</p>
+</div>
+<div class="p-6 rounded-xl bg-background-dark/80 border border-white/5">
+<h3 class="text-lg font-oswald font-bold uppercase text-primary mb-2">Skill ROI</h3>
+<p class="text-slate-400 text-xs">Ranking every skill by how likely it earns you minutes.</p>
+</div>
+<div class="p-6 rounded-xl bg-primary flex flex-col items-center justify-center text-center">
+<h3 class="text-background-dark font-oswald text-xl font-black uppercase mb-3">Ready to Play?</h3>
+<button class="bg-background-dark text-white px-6 py-2 rounded-lg font-bold uppercase text-xs">
+                    Access Now
+                </button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4">
+<div class="max-w-md mx-auto text-center">
+<div class="mb-16 bg-gradient-to-br from-primary via-primary/80 to-accent-gold p-8 rounded-2xl relative overflow-hidden">
+<span class="material-symbols-outlined text-background-dark/30 text-6xl absolute -top-2 -left-2">format_quote</span>
+<h2 class="text-background-dark font-oswald text-2xl font-black uppercase italic leading-tight relative z-10">
+                "Translate reality into the language of winners."
+            </h2>
+</div>
+<div class="space-y-6 mb-12">
+<h2 class="font-oswald text-5xl font-black uppercase tracking-tighter leading-none">Become difficult <br/> to <span class="text-primary">ignore.</span></h2>
+<p class="text-slate-400 font-light text-sm">Join the elite few who play the game on their own terms.</p>
+</div>
+<form class="space-y-4 text-left glass p-6 rounded-2xl">
+<div>
+<label class="block text-[10px] uppercase font-bold text-slate-500 mb-2 tracking-widest">Email Address</label>
+<input class="w-full bg-background-dark border border-white/10 rounded-lg px-4 py-3 focus:ring-primary focus:border-primary outline-none text-sm" placeholder="your@email.com" type="email"/>
+</div>
+<button class="w-full bg-primary text-background-dark font-oswald text-lg font-bold uppercase py-4 rounded-lg tracking-widest shadow-lg shadow-primary/20">
+                Get Access
+            </button>
+</form>
+</div>
+</section>
+<footer class="py-12 px-4 border-t border-white/5 bg-background-dark">
+<div class="max-w-md mx-auto text-center space-y-8">
+<div class="flex items-center justify-center gap-2">
+<div class="w-6 h-6 bg-white rounded flex items-center justify-center text-background-dark font-bold text-[10px]">L</div>
+<span class="font-oswald uppercase font-bold tracking-widest text-xs">Leverage in the Game</span>
+</div>
+<div class="flex justify-center gap-6 text-[10px] uppercase font-bold tracking-widest text-slate-500">
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+<a href="#">Support</a>
+</div>
+<p class="text-[9px] text-slate-600 uppercase tracking-widest">© 2024 Leverage in the Game. All rights reserved.</p>
+</div>
+</footer>
+
+</body></html>

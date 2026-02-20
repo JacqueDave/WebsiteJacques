@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ENV_PATH = path.join(__dirname, ".env");
-const OUTPUT_PATH = path.join(__dirname, "config.js");
+const OUTPUT_PATH = path.join(__dirname, "js", "config.js");
 
 // Only expose client-safe keys to the browser.
 const PUBLIC_KEYS = [
