@@ -87,7 +87,7 @@
   <nav class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
       <!-- Logo -->
-      <div class="flex items-center gap-2 md:gap-3">
+      <a href="index.html" class="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
         <div
           class="w-7 h-7 md:w-8 md:h-8 bg-primary rounded flex items-center justify-center text-background-dark font-bold text-sm md:text-xl">
           L</div>
@@ -96,7 +96,7 @@
           <span class="md:hidden">Leverage</span>
           <span class="hidden md:inline">Leverage in the Game</span>
         </span>
-      </div>
+      </a>
       <!-- Mobile: simple CTA button -->
       <a href="#lead"
         class="md:hidden bg-primary text-background-dark px-4 py-1.5 rounded-md font-bold text-xs uppercase tracking-wider">
@@ -135,10 +135,6 @@
       <!-- Text content: centered on mobile, left on desktop -->
       <div class="space-y-6 md:space-y-8 text-center lg:text-left">
         <div class="space-y-4">
-          <span
-            class="text-primary font-oswald uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-sm font-bold block">For
-            serious players
-            16-25</span>
           <h1
             class="font-oswald text-5xl md:text-9xl font-black uppercase leading-[0.9] md:leading-[0.85] tracking-tighter">
             Make Yourself <br /> <span class="text-primary italic">Useful...</span>
@@ -174,8 +170,7 @@
           class="flex items-center gap-4 py-4 justify-center lg:justify-start border-t lg:border-t-0 lg:border-l-4 border-white/5 lg:border-accent-gold lg:pl-6">
           <img alt="Founder portrait"
             class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-accent-gold"
-            data-alt="Professional portrait of founder coach"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLLBoBiiqwJCIbY_o8MfEivyLm_8ji6gzdETtck7O-yBJzgi9S7EWIlzcAuXkf0qCMhg04koHv5zgno5nsWdHczruRtMqjC7MJx5VZ18vOHY4oy4ebbqABayCow_xgIpHSJ63GOpgoZ3O9CeCgUSVWxQ3fx-EPSEcGTEKKz0q0hONKopqxbHiZNXNr1fcYD0UY8e8Wg_gKsJDfkbnTlsgpliL19pclT4XyBoQ9FKRWJD2hb3XCFFzGofhtd6rTargS3i790iMdduI" />
+            src="assets/images/Me_profile.jpeg" />
           <div class="text-left">
             <p class="font-oswald font-bold uppercase tracking-wide text-xs md:text-base">Coach &amp; Founder</p>
             <p class="text-slate-500 text-[10px] md:text-sm uppercase">Pro Player &amp; Engineer</p>
@@ -199,14 +194,16 @@
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <!-- Mobile: stacked with dividers / Desktop: 3-column grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 text-center">
-        <div class="flex flex-col items-center px-8 md:border-r border-white/5">
+        <div class="flex flex-col items-center px-2 md:px-8 md:border-r border-white/5">
           <span class="text-primary font-oswald uppercase text-[10px] md:text-xs tracking-widest mb-1">The Path</span>
-          <span class="text-xl md:text-2xl font-oswald font-bold uppercase">Cameroon to Pro</span>
+          <span class="text-sm md:text-[1.1rem] font-oswald font-bold uppercase leading-snug break-words">From Cameroon
+            to Uni (without being recruited) to Pro Basketball</span>
         </div>
         <div
-          class="flex flex-col items-center px-8 md:border-r border-white/5 border-y md:border-y-0 border-white/5 py-6 md:py-0">
+          class="flex flex-col items-center px-2 md:px-8 md:border-r border-white/5 border-y md:border-y-0 border-white/5 py-6 md:py-0">
           <span class="text-accent-gold font-oswald uppercase text-[10px] md:text-xs tracking-widest mb-1">Awards</span>
-          <span class="text-xl md:text-2xl font-oswald font-bold uppercase">Defensive Honors</span>
+          <span class="text-sm md:text-[1.1rem] font-oswald font-bold uppercase leading-snug break-words">UO Rookie of
+            Year, OUA All Rookie Team, Defensive Player of the Year, OUA All Star</span>
         </div>
         <div class="flex flex-col items-center px-8">
           <span
@@ -217,18 +214,74 @@
     </div>
   </section>
 
-  <!-- ===== CORE TRANSFORMATION STEPS ===== -->
+  <!-- ===== FOUNDER STORY ===== -->
+  <section class="py-20 md:py-24 bg-surface-dark px-4 md:px-0 relative overflow-hidden">
+    <div class="max-w-md md:max-w-7xl mx-auto md:px-6 grid lg:grid-cols-2 gap-12 md:gap-20 items-center relative z-10">
+
+      <!-- Content side -->
+      <div class="space-y-6 md:space-y-8 order-2 lg:order-1">
+        <div>
+          <h2 class="font-oswald text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-2">
+            Hi, I'm <span class="text-primary italic">Jacques</span>
+          </h2>
+          <p class="font-oswald text-primary tracking-[0.2em] text-xs md:text-sm uppercase font-bold">Pro Player &
+            Engineer</p>
+        </div>
+
+        <div class="space-y-5 text-slate-300 text-sm md:text-base leading-relaxed font-light mt-6">
+          <p>I came from Cameroon alone, had no scouting, no offers, no program, lost access to gyms during COVID, and
+            still forced my way into one of the best programs in Canada. <strong class="text-white font-medium">I wasn’t
+              given minutes — I earned them by understanding how the system works.</strong></p>
+          <p>I wasn’t recruited. I didn’t have visibility. I didn’t have guarantees. But I found a way in by emailing
+            coaches and sending men’s league footage. I barely played at first. But I didn’t complain. I adjusted.</p>
+          <p>By understanding roles, value, and what coaches actually reward, I went from the end of the rotation to
+            conference rookie honors, defensive awards, all-star recognition, multiple championships, medals at the
+            national level and eventually professional basketball — while earning a Civil Engineering Degree.</p>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-white/10">
+          <p class="font-oswald text-xl md:text-2xl font-bold uppercase tracking-wide text-primary leading-relaxed">
+            This guide exists to explain what was necessary, not what was optional.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-2">
+          <p class="font-oswald text-lg md:text-xl font-bold uppercase tracking-wider text-slate-400">
+            Most trainers have <span class="text-white">skills.</span>
+          </p>
+          <p class="font-oswald text-lg md:text-xl font-bold uppercase tracking-wider text-slate-400">
+            Most motivators have <span class="text-accent-gold">stories.</span>
+          </p>
+          <p class="font-oswald text-lg md:text-xl font-bold uppercase tracking-wider text-slate-400">
+            Most coaches have <span class="text-primary">authority.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Image side -->
+      <div class="order-1 lg:order-2 relative w-full flex justify-center lg:justify-end items-center">
+        <!-- Soft glow behind the image -->
+        <div class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full"></div>
+        <div
+          class="relative w-full max-w-[400px] lg:max-w-[450px] mx-auto overflow-hidden rounded-2xl glass p-2 transform rotate-1 border-white/10 shadow-2xl">
+          <img src="assets/images/i'm_jacques.jpeg" alt="Jacques on the court"
+            class="w-full h-[500px] md:h-[600px] object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== I COMBINE FOUR THINGS ===== -->
   <section class="py-20 md:py-24 px-4 md:px-6 relative" id="process">
     <div
-      class="absolute top-0 left-0 md:right-0 md:left-auto w-1/2 md:w-1/3 h-full bg-primary/5 blur-[80px] md:blur-[120px] rounded-full">
+      class="absolute top-0 left-0 md:right-0 md:left-auto w-1/2 md:w-1/3 h-full bg-primary/5 blur-[80px] md:blur-[120px] rounded-full z-0">
     </div>
-    <div class="max-w-md md:max-w-7xl mx-auto">
+    <div class="max-w-md md:max-w-7xl mx-auto relative z-10">
       <div class="mb-12 md:mb-16 text-center">
-        <h2 class="font-oswald text-4xl md:text-6xl font-black uppercase mb-3 md:mb-4">The Evolution</h2>
+        <h2 class="font-oswald text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-3 md:mb-4">Four Things That
+          Almost Never Come Together</h2>
         <div class="h-1 w-12 bg-primary mx-auto md:hidden"></div>
-        <p class="hidden md:block text-slate-400 max-w-xl mx-auto">A systematic approach to moving from the end of the
-          bench to the
-          centerpiece of the rotation.</p>
       </div>
       <!-- Cards: single column on mobile, 4-column on desktop -->
       <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -238,10 +291,13 @@
           <div
             class="text-7xl md:text-6xl font-oswald font-black text-stroke absolute top-2 md:top-4 right-4 md:right-6 opacity-30 md:opacity-40">
             01</div>
-          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">visibility_off</span>
-          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Invisible</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Starting from zero. The player nobody notices because you
-            haven't defined your specific utility.</p>
+          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">public</span>
+          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Immigrant / Outsider Path</h3>
+          <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2 relative z-10">
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> No scouting</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> No network</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> No safety net</li>
+          </ul>
         </div>
         <!-- Card 2 -->
         <div
@@ -249,10 +305,15 @@
           <div
             class="text-7xl md:text-6xl font-oswald font-black text-stroke absolute top-2 md:top-4 right-4 md:right-6 opacity-30 md:opacity-40">
             02</div>
-          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">military_tech</span>
-          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Valuable</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Building your foundation. Developing a "superpower" that
-            solves a coach's headache.</p>
+          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">psychology</span>
+          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">System Intelligence</h3>
+          <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2 relative z-10">
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> I understand recruiting</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> I understand roster hierarchy
+            </li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> I understand coach incentives
+            </li>
+          </ul>
         </div>
         <!-- Card 3 -->
         <div
@@ -260,10 +321,13 @@
           <div
             class="text-7xl md:text-6xl font-oswald font-black text-stroke absolute top-2 md:top-4 right-4 md:right-6 opacity-30 md:opacity-40">
             03</div>
-          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">verified_user</span>
-          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Trusted</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">You are the "safety net." The coach knows exactly what they
-            get when you step on the floor.</p>
+          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">fitness_center</span>
+          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Extreme Discipline</h3>
+          <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2 relative z-10">
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> Multiple workouts/day</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> In-season commitment</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> Long-term consistency</li>
+          </ul>
         </div>
         <!-- Card 4 -->
         <div
@@ -271,61 +335,14 @@
           <div
             class="text-7xl md:text-6xl font-oswald font-black text-stroke absolute top-2 md:top-4 right-4 md:right-6 opacity-30 md:opacity-40">
             04</div>
-          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">schedule</span>
-          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Minutes</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Dominating the court. Transition from specialist to star.
-            You own the rotation flow.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CORE ADVANTAGE / SPLIT LAYOUT ===== -->
-  <section class="py-20 md:py-24 bg-surface-dark px-4 md:px-0">
-    <div class="max-w-md md:max-w-7xl mx-auto md:px-6 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-      <div>
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-gold/10 border border-accent-gold/20 mb-6 md:mb-8">
-          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
-          <span class="text-accent-gold text-[10px] md:text-xs font-bold uppercase tracking-widest">The Core
-            Advantage</span>
-        </div>
-        <blockquote class="font-oswald text-3xl md:text-5xl font-bold uppercase leading-tight mb-6 md:mb-8 italic">
-          "Athleticism gets you in the gym. <span class="text-primary">Leverage</span> keeps you on the floor."
-        </blockquote>
-        <p class="hidden md:block text-slate-400 text-lg mb-8 leading-relaxed">
-          The 'Make Yourself Useful' system isn't just about jump shots. It's a civil engineering approach to
-          basketball: structural integrity, optimized leverage, and high-ROI movement patterns.
-        </p>
-      </div>
-      <div class="space-y-4 md:space-y-6">
-        <h4 class="font-oswald text-lg md:text-2xl uppercase font-bold text-slate-100 tracking-wide mb-4 md:mb-8">The
-          Unique Stack</h4>
-        <div class="space-y-4">
-          <div
-            class="flex gap-4 md:gap-5 p-5 md:p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/[0.07] transition-colors">
-            <span class="material-symbols-outlined text-primary">engineering</span>
-            <div>
-              <p class="font-bold text-sm md:text-base mb-1">Structural Intelligence</p>
-              <p class="text-xs md:text-sm text-slate-400 italic">Civil engineering approach to defensive schemes.</p>
-            </div>
-          </div>
-          <div
-            class="flex gap-4 md:gap-5 p-5 md:p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/[0.07] transition-colors">
-            <span class="material-symbols-outlined text-primary">bolt</span>
-            <div>
-              <p class="font-bold text-sm md:text-base mb-1">ROI Focused Training</p>
-              <p class="text-xs md:text-sm text-slate-400 italic">Skills that actually earn consistent minutes.</p>
-            </div>
-          </div>
-          <div
-            class="flex gap-4 md:gap-5 p-5 md:p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/[0.07] transition-colors">
-            <span class="material-symbols-outlined text-primary">psychology</span>
-            <div>
-              <p class="font-bold text-sm md:text-base mb-1">Coaches Logic Deciphered</p>
-              <p class="text-xs md:text-sm text-slate-400 italic">Speak the professional language of coaches.</p>
-            </div>
-          </div>
+          <span class="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6">my_location</span>
+          <h3 class="text-xl md:text-2xl font-oswald font-bold uppercase mb-2 md:mb-3">Role Clarity</h3>
+          <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2 relative z-10">
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> I know why working on the wrong
+              skills kills careers</li>
+            <li class="flex gap-2"><span class="text-primary mt-[2px]">&rsaquo;</span> I know how to align skillset →
+              minutes → trust</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -351,16 +368,13 @@
           </div>
         </div>
         <div class="masonry-item rounded-xl overflow-hidden glass">
-          <img alt="Basketball game action" class="w-full grayscale"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVbTNki8R3q-bvgpw0vXZWcjYT8lpY-BtoQuFZVarznG9So1niWnwibclyAOSczL6Q5gwH8ixMWgHbjPhUkap-KZA57XBjvaIrseatyEYVN7F8zMp6VWq92Nw5e1zaNojLjfNNoye3_X5eWKrJRrze3C_p1DEoui0zjSVdwf1PMuvIOBXRncqluN3ArBMdaPeLTj3d-LxL3RzJzpXLrKAg9ajYFaDmHVhjCgJb8nsyU6Yls-889m-eR6Y3aUA8Qtiaa6zQpaKfEg" />
+          <img alt="Winning moment" class="w-full grayscale" src="assets/images/winning.jpeg" />
         </div>
         <div class="masonry-item rounded-xl overflow-hidden glass">
-          <img alt="Professional stats" class="w-full grayscale"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaQUFI0BHGRvNy2UfKAd14PqjasjKl4jBGhwFLq3ts06dWNBUH-zFxq0ulvHzuAy-PrCOUETtGGVCcTgXL34948EyMi8IyHvS_N1TUAR1PnH3LWxTRTAjGipdKnUrTT0gGNvxfRV8cDh2AJI9g0b7tHj64BR3jB5e61J0K2eCHfGpgTJ3woPIAlVWrbI0X0lUewhMxcBsN_ocCCVOCQOq5IBozk__AuMh4t2K85LTvrCDjTPRhGhMk7UbVen4vpAyVnhzeM1UAVfQ" />
+          <img alt="Award" class="w-full grayscale" src="assets/images/award.jpeg" />
         </div>
         <div class="masonry-item rounded-xl overflow-hidden glass">
-          <img alt="Training session" class="w-full grayscale"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR3OYSf_qQho1sDTCPwd_R7-9eqC7uAZ5Ftt-gnhrHL_Wcx2EvKdYvy2hXSlj25epZt-RbHE6jP6ID4K-b2n-_E31Z3li7BrnPrkbX98-dIP5q0Z5g3HnE04j-v0oQMKdTq874dnW_uiCorHvuElJ3vmr8-IciBqxg23ikM9ua0PZ-MHT0TIINLRbXbKOozuEbhsnn68d5y5AiWn1uMGHnnOYE5cxIG9s3mWbqn6CTG39RuFxXcpNceyYoh0_vcrDPpUsgpKGKlKg" />
+          <img alt="All Star" class="w-full grayscale" src="assets/images/all-star.jpeg" />
         </div>
       </div>
 
@@ -375,19 +389,16 @@
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden glass group">
-          <img alt="Basketball game action"
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVbTNki8R3q-bvgpw0vXZWcjYT8lpY-BtoQuFZVarznG9So1niWnwibclyAOSczL6Q5gwH8ixMWgHbjPhUkap-KZA57XBjvaIrseatyEYVN7F8zMp6VWq92Nw5e1zaNojLjfNNoye3_X5eWKrJRrze3C_p1DEoui0zjSVdwf1PMuvIOBXRncqluN3ArBMdaPeLTj3d-LxL3RzJzpXLrKAg9ajYFaDmHVhjCgJb8nsyU6Yls-889m-eR6Y3aUA8Qtiaa6zQpaKfEg" />
+          <img alt="Winning moment" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+            src="assets/images/winning.jpeg" />
         </div>
         <div class="rounded-2xl overflow-hidden glass group">
-          <img alt="Professional stats"
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaQUFI0BHGRvNy2UfKAd14PqjasjKl4jBGhwFLq3ts06dWNBUH-zFxq0ulvHzuAy-PrCOUETtGGVCcTgXL34948EyMi8IyHvS_N1TUAR1PnH3LWxTRTAjGipdKnUrTT0gGNvxfRV8cDh2AJI9g0b7tHj64BR3jB5e61J0K2eCHfGpgTJ3woPIAlVWrbI0X0lUewhMxcBsN_ocCCVOCQOq5IBozk__AuMh4t2K85LTvrCDjTPRhGhMk7UbVen4vpAyVnhzeM1UAVfQ" />
+          <img alt="Award" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+            src="assets/images/award.jpeg" />
         </div>
         <div class="col-span-2 rounded-2xl overflow-hidden glass group relative">
-          <img alt="Training session"
-            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR3OYSf_qQho1sDTCPwd_R7-9eqC7uAZ5Ftt-gnhrHL_Wcx2EvKdYvy2hXSlj25epZt-RbHE6jP6ID4K-b2n-_E31Z3li7BrnPrkbX98-dIP5q0Z5g3HnE04j-v0oQMKdTq874dnW_uiCorHvuElJ3vmr8-IciBqxg23ikM9ua0PZ-MHT0TIINLRbXbKOozuEbhsnn68d5y5AiWn1uMGHnnOYE5cxIG9s3mWbqn6CTG39RuFxXcpNceyYoh0_vcrDPpUsgpKGKlKg" />
+          <img alt="All Star" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+            src="assets/images/all-star.jpeg" />
           <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
       </div>
@@ -548,21 +559,22 @@
 
       <!-- Footer links -->
       <div
-        class="pt-8 md:pt-20 border-t border-white/5 flex flex-col items-center gap-6 md:gap-8 md:flex-row md:justify-between opacity-50">
-        <div class="flex items-center gap-2">
+        class="pt-8 md:pt-20 border-t border-white/5 flex flex-col items-center gap-6 md:gap-8 md:flex-row md:justify-between opacity-50 pb-8 md:pb-0">
+        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <div
             class="w-6 h-6 bg-white rounded flex items-center justify-center text-background-dark font-bold text-[10px] md:text-xs">
             L</div>
           <span class="font-oswald uppercase font-bold tracking-widest text-xs md:text-sm">Leverage in the Game</span>
-        </div>
-        <div class="flex gap-6 md:gap-8 text-[10px] md:text-xs uppercase font-bold tracking-widest text-slate-500">
-          <a class="hover:text-primary transition-colors" href="#">Privacy</a>
-          <a class="hover:text-primary transition-colors" href="#">Terms</a>
-          <a class="hover:text-primary transition-colors" href="#">Support</a>
+        </a>
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+          <div class="flex gap-6 md:gap-8 text-[10px] md:text-xs uppercase font-bold tracking-widest text-slate-500">
+            <a class="hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+            <a class="hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+          </div>
+          <p class="text-[9px] md:text-[10px] text-slate-600 uppercase tracking-widest text-center md:text-left">© 2026
+            Leverage in the Game. All rights reserved.</p>
         </div>
       </div>
-      <p class="md:hidden text-[9px] text-slate-600 uppercase tracking-widest">© 2024 Leverage in the Game. All rights
-        reserved.</p>
     </div>
   </footer>
 
