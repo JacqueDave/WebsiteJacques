@@ -107,7 +107,7 @@ const bindLeadForms = () => {
       } catch (error) {
         console.error("Error submitting form:", error);
       } finally {
-        // ALWAYS redirect, even if email capture failed
+        // ALWAYS redirect, even if email capture failed (Funnel must not break)
         const redirect =
           form.getAttribute("data-redirect") ||
           form.getAttribute("action") ||
