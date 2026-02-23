@@ -2,9 +2,9 @@
   "name": "websitejacques",
   "version": "1.0.0",
   "description": "Two-page course sales funnel for serious basketball players.",
-  "main": "build-config.js",
+  "main": "build-static.js",
   "scripts": {
-    "build": "node build-config.js",
+    "build": "node build-config.js && node build-static.js",
     "start": "./run.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -206,6 +206,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
+  <script>
+    (() => {
+      const config = window.RUNTIME_CONFIG || {};
+      const stripeUrl = [
+        config.STRIPE_CHECKOUT_URL,
+        config.NEXT_PUBLIC_STRIPE_CHECKOUT_URL,
+        config.VITE_STRIPE_CHECKOUT_URL,
+        config.PUBLIC_STRIPE_CHECKOUT_URL,
+      ].find((value) => typeof value === "string" && value.trim());
+
+      const stripeLink = document.querySelector("[data-stripe-link]");
+      if (!stripeLink || !stripeUrl) return;
+
+      stripeLink.href = stripeUrl.trim();
+      stripeLink.removeAttribute("aria-disabled");
+    })();
+  </script>
   <script src="js/script.js"></script>
 </body>
 
