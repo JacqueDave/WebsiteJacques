@@ -1,2 +1,2 @@
--- This will completely delete the leads table and all data inside it
-DROP TABLE IF EXISTS public.leads CASCADE;
+-- DESTRUCTIVE: deletes public.leads and all contained data.
+drop table if exists public.leads cascade;

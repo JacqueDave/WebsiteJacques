@@ -20,7 +20,7 @@ Usage: ./run.sh [options]
 Options:
   -p, --port <port>   Port for local server (default: 3050)
   -h, --host <host>   Bind host (default: 127.0.0.1)
-      --no-build      Skip config.js generation
+      --no-build      Skip js/config.js generation
       --strict-port   Fail if selected port is already in use
       --help          Show this help
 
@@ -144,11 +144,11 @@ if [[ "$SKIP_BUILD" -eq 0 ]]; then
     exit 1
   fi
 
-  echo "Generating config.js from .env..."
+  echo "Generating js/config.js from .env..."
   (cd "$PROJECT_DIR" && node build-config.js)
 else
-  if [[ ! -f "$PROJECT_DIR/config.js" ]]; then
-    echo "Error: config.js not found. Run without --no-build first."
+  if [[ ! -f "$PROJECT_DIR/js/config.js" ]]; then
+    echo "Error: js/config.js not found. Run without --no-build first."
     exit 1
   fi
 fi
@@ -178,7 +178,6 @@ echo "- URL:  http://$HOST:$PORT"
 echo "Pages available:"
 echo "- Landing:   http://$HOST:$PORT/index.html"
 echo "- Thank-you: http://$HOST:$PORT/thank-you.html"
-echo "- Checkout:  http://$HOST:$PORT/checkout.html"
 echo
 echo "Press Ctrl+C to stop the server."
 

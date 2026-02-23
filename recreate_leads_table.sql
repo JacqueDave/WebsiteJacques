@@ -1,27 +1,26 @@
--- Ensure UUID generation works
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
+-- DESTRUCTIVE RESET SCRIPT.
+-- Drops public.leads and recreates it with the expected grants/policy.
 
--- 1. Create the leads table freshly
-CREATE TABLE public.leads (
+drop table if exists public.leads cascade;
+create extension if not exists pgcrypto;
+
+create table public.leads (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   name text,
   email text not null
 );
 
--- 2. Explicit privileges for PostgREST roles to access and write
-GRANT usage ON schema public TO anon, authenticated;
-GRANT insert ON table public.leads TO anon, authenticated;
+grant usage on schema public to anon, authenticated;
+grant insert on table public.leads to anon, authenticated;
 
--- 3. Enable RLS (Row Level Security)
-ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
+alter table public.leads enable row level security;
 
--- 4. Clean up any attached policies just in case
-DROP POLICY IF EXISTS "leads_insert_anon_authenticated" ON public.leads;
+drop policy if exists "Enable insert for everyone" on public.leads;
+drop policy if exists "leads_insert_anon_authenticated" on public.leads;
 
--- 5. Create policy allowing anyone (anon) to insert a row
-CREATE POLICY "leads_insert_anon_authenticated"
-ON public.leads
-FOR INSERT
-TO anon, authenticated
-WITH CHECK (true);
+create policy "leads_insert_anon_authenticated"
+on public.leads
+for insert
+to anon, authenticated
+with check (true);
