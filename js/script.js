@@ -101,19 +101,18 @@ const bindLeadForms = () => {
           },
         ]);
 
-        if (error) throw error;
-
+        if (error) {
+          console.error("Supabase error (non-fatal):", error);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        // ALWAYS redirect, even if email capture failed
         const redirect =
           form.getAttribute("data-redirect") ||
           form.getAttribute("action") ||
           "thank-you.html";
         window.location.href = redirect;
-      } catch (error) {
-        const message = formatErrorMessage(error);
-        console.error("Error submitting form:", error);
-        alert(`There was an error submitting your information: ${message}`);
-        submitButton.disabled = false;
-        submitButton.innerText = originalButtonText;
       }
     });
   });
