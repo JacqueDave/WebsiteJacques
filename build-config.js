@@ -5,11 +5,27 @@ const ENV_PATH = path.join(__dirname, ".env");
 const OUTPUT_PATH = path.join(__dirname, "js", "config.js");
 
 // Only expose client-safe keys to the browser.
-const PUBLIC_KEYS = [
-  "SUPABASE_URL",
-  "SUPABASE_ANON_KEY",
-  "STRIPE_CHECKOUT_URL",
-];
+// Each key supports common env naming conventions used across deploy targets.
+const PUBLIC_KEY_ALIASES = {
+  SUPABASE_URL: [
+    "SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "VITE_SUPABASE_URL",
+    "PUBLIC_SUPABASE_URL",
+  ],
+  SUPABASE_ANON_KEY: [
+    "SUPABASE_ANON_KEY",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "VITE_SUPABASE_ANON_KEY",
+    "PUBLIC_SUPABASE_ANON_KEY",
+  ],
+  STRIPE_CHECKOUT_URL: [
+    "STRIPE_CHECKOUT_URL",
+    "NEXT_PUBLIC_STRIPE_CHECKOUT_URL",
+    "VITE_STRIPE_CHECKOUT_URL",
+    "PUBLIC_STRIPE_CHECKOUT_URL",
+  ],
+};
 
 const readEnvFile = () => {
   let fileEnv = {};
@@ -42,9 +58,14 @@ const readEnvFile = () => {
 const env = readEnvFile();
 const publicConfig = {};
 
-PUBLIC_KEYS.forEach((key) => {
-  if (env[key]) {
-    publicConfig[key] = env[key];
+Object.entries(PUBLIC_KEY_ALIASES).forEach(([publicKey, aliases]) => {
+  const sourceKey = aliases.find((key) => {
+    const value = env[key];
+    return typeof value === "string" ? value.trim().length > 0 : Boolean(value);
+  });
+
+  if (sourceKey) {
+    publicConfig[publicKey] = String(env[sourceKey]).trim();
   }
 });
 

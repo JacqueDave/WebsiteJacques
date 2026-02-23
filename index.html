@@ -158,8 +158,7 @@
         </div>
 
         <!-- Form: stacked on mobile, inline on desktop -->
-        <form class="flex flex-col gap-3 max-w-md mx-auto lg:mx-0" data-lead-form data-redirect="thank-you.html"
-          action="thank-you.html" method="get">
+        <form class="flex flex-col gap-3 max-w-md mx-auto lg:mx-0" data-lead-form data-redirect="thank-you.html">
           <input name="name" type="hidden" value="Interested Player" />
           <input name="email"
             class="w-full bg-white/5 border border-white/10 rounded-lg px-5 md:px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-center lg:text-left"
@@ -506,7 +505,7 @@
       <!-- Mobile: simple email-only form / Desktop: full form with name -->
       <div class="md:hidden">
         <form class="space-y-4 text-left glass p-6 rounded-2xl" id="lead-mobile" data-lead-form
-          data-redirect="thank-you.html" action="thank-you.html" method="get">
+          data-redirect="thank-you.html">
           <input name="name" type="hidden" value="Interested Player" />
           <div>
             <label class="block text-[10px] uppercase font-bold text-slate-500 mb-2 tracking-widest">Email
@@ -523,8 +522,7 @@
       </div>
 
       <div class="hidden md:block max-w-lg mx-auto bg-surface-dark p-8 rounded-2xl border border-white/10 shadow-2xl">
-        <form id="lead" class="space-y-4" data-lead-form data-redirect="thank-you.html" action="thank-you.html"
-          method="get">
+        <form id="lead" class="space-y-4" data-lead-form data-redirect="thank-you.html">
           <div class="text-left">
             <label class="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-widest">Full Name</label>
             <input name="name"

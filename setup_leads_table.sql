@@ -1,17 +1,27 @@
--- Create the leads table if it doesn't exist
-CREATE TABLE IF NOT EXISTS public.leads (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  created_at timestamptz DEFAULT now(),
+-- Ensure UUID generation works on all projects.
+create extension if not exists pgcrypto;
+
+-- Create the leads table if it doesn't exist.
+create table if not exists public.leads (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
   name text,
-  email text
+  email text not null
 );
 
--- Enable RLS (Row Level Security) on the table which is best practice
-ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
+-- Explicit privileges for PostgREST roles.
+grant usage on schema public to anon, authenticated;
+grant insert on table public.leads to anon, authenticated;
 
--- Create a policy that allows anyone (anon key) to INSERT data
-CREATE POLICY "Enable insert for everyone" 
-ON public.leads 
-FOR INSERT 
-TO anon 
-WITH CHECK (true);
+-- Enable RLS (best practice when using anon/authenticated keys).
+alter table public.leads enable row level security;
+
+-- Keep policy idempotent so this script can be re-run safely.
+drop policy if exists "Enable insert for everyone" on public.leads;
+drop policy if exists "leads_insert_anon_authenticated" on public.leads;
+
+create policy "leads_insert_anon_authenticated"
+on public.leads
+for insert
+to anon, authenticated
+with check (true);

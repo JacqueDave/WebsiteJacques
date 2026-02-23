@@ -1,11 +1,55 @@
-// Runtime config is injected by config.js (generated from .env).
+// Runtime config is injected by config.js (generated from env vars at build time).
 const runtimeConfig = window.RUNTIME_CONFIG || {};
 
-const stripeCheckoutUrl = runtimeConfig.STRIPE_CHECKOUT_URL || "";
-const supabaseUrl = runtimeConfig.SUPABASE_URL || "";
-const supabaseKey = runtimeConfig.SUPABASE_ANON_KEY || "";
+const readConfigValue = (keys) => {
+  for (const key of keys) {
+    const value = runtimeConfig[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+  return "";
+};
 
-const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+const stripeCheckoutUrl = readConfigValue([
+  "STRIPE_CHECKOUT_URL",
+  "NEXT_PUBLIC_STRIPE_CHECKOUT_URL",
+  "VITE_STRIPE_CHECKOUT_URL",
+  "PUBLIC_STRIPE_CHECKOUT_URL",
+]);
+
+const supabaseUrl = readConfigValue([
+  "SUPABASE_URL",
+  "NEXT_PUBLIC_SUPABASE_URL",
+  "VITE_SUPABASE_URL",
+  "PUBLIC_SUPABASE_URL",
+]);
+
+const supabaseKey = readConfigValue([
+  "SUPABASE_ANON_KEY",
+  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  "VITE_SUPABASE_ANON_KEY",
+  "PUBLIC_SUPABASE_ANON_KEY",
+]);
+
+let supabase = null;
+if (window.supabase && supabaseUrl && supabaseKey) {
+  try {
+    supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+  } catch (error) {
+    console.error("Supabase client initialization failed:", error);
+  }
+}
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing Supabase config values in RUNTIME_CONFIG.");
+}
+
+const formatErrorMessage = (error) => {
+  if (!error) return "Unknown error.";
+  const parts = [error.message, error.details, error.hint, error.code].filter(Boolean);
+  return parts.length ? parts.join(" | ") : "Unknown error.";
+};
 
 // ── Stripe Links ──
 const applyStripeLinks = () => {
@@ -41,11 +85,21 @@ const bindLeadForms = () => {
       const name = formData.get("name");
       const email = formData.get("email");
 
+      if (!email || !String(email).trim()) {
+        alert("Please enter a valid email.");
+        return;
+      }
+
       try {
         submitButton.disabled = true;
         submitButton.innerText = "Sending...";
 
-        const { error } = await supabase.from("leads").insert([{ name, email }]);
+        const { error } = await supabase.from("leads").insert([
+          {
+            name: name ? String(name).trim() : null,
+            email: String(email).trim().toLowerCase(),
+          },
+        ]);
 
         if (error) throw error;
 
@@ -55,8 +109,9 @@ const bindLeadForms = () => {
           "thank-you.html";
         window.location.href = redirect;
       } catch (error) {
+        const message = formatErrorMessage(error);
         console.error("Error submitting form:", error);
-        alert("There was an error submitting your information. Please try again.");
+        alert(`There was an error submitting your information: ${message}`);
         submitButton.disabled = false;
         submitButton.innerText = originalButtonText;
       }
