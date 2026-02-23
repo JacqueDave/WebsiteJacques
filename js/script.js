@@ -76,6 +76,110 @@ const readRedirectTarget = (form) =>
   form.getAttribute("action") ||
   "thank-you.html";
 
+const buildLeadsEndpoint = () => {
+  if (!supabaseUrl) return "";
+  return `${supabaseUrl.replace(/\/$/, "")}/rest/v1/leads`;
+};
+
+const insertLeadRecord = async ({ name, email, source }) => {
+  if (!supabaseUrl || !supabaseKey) {
+    const error = new Error("Missing Supabase REST configuration.");
+    error.reasonCode = "missing_config";
+    throw error;
+  }
+
+  const endpoint = buildLeadsEndpoint();
+  const response = await withTimeout(
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify([{ name, email }]),
+    }),
+    LEAD_INSERT_TIMEOUT_MS
+  );
+
+  if (!response.ok) {
+    const details = await response.text().catch(() => "");
+    const error = new Error(
+      `HTTP ${response.status} ${response.statusText}${details ? ` | ${details}` : ""}`
+    );
+    error.reasonCode = "insert_failed";
+    throw error;
+  }
+
+  console.log(`[lead_capture:ok] source=${source} email=${email}`);
+};
+
+const rescueNativeLeadSubmission = async () => {
+  const { pathname, search, hash } = window.location;
+  if (!search) return false;
+
+  const params = new URLSearchParams(search);
+  const rawEmail = params.get("email");
+  if (!rawEmail || !rawEmail.trim()) return false;
+
+  const normalizedEmail = rawEmail.trim().toLowerCase();
+  const rawName = params.get("name");
+  const normalizedName =
+    typeof rawName === "string" && rawName.trim() ? rawName.trim() : null;
+
+  const rescueToken = `${pathname}|${normalizedEmail}|${normalizedName || ""}`;
+  const rescueKey = "lead_capture_query_rescue";
+
+  try {
+    if (window.sessionStorage.getItem(rescueKey) === rescueToken) {
+      return false;
+    }
+    window.sessionStorage.setItem(rescueKey, rescueToken);
+  } catch (_) {
+    // Ignore storage errors and continue with rescue flow.
+  }
+
+  try {
+    await insertLeadRecord({
+      name: normalizedName,
+      email: normalizedEmail,
+      source: "query_rescue",
+    });
+  } catch (error) {
+    if (error && error.reasonCode === "missing_config") {
+      console.error("[lead_capture:query_rescue_missing_config] Missing Supabase runtime config.");
+    } else if (error && error.reasonCode === "insert_failed") {
+      console.error(
+        `[lead_capture:query_rescue_insert_failed] ${formatErrorMessage(error)}`,
+        error
+      );
+    } else
+    if (error && error.reasonCode === "timeout") {
+      console.error(
+        `[lead_capture:query_rescue_timeout] Insert timed out after ${LEAD_INSERT_TIMEOUT_MS}ms.`,
+        error
+      );
+    } else {
+      console.error(
+        `[lead_capture:query_rescue_unexpected_error] ${formatErrorMessage(error)}`,
+        error
+      );
+    }
+  }
+
+  const cleanUrl = `${pathname}${hash || ""}`;
+  window.history.replaceState({}, document.title, cleanUrl);
+
+  const isLandingPage = pathname === "/" || pathname.endsWith("/index.html");
+  if (isLandingPage) {
+    window.location.replace("thank-you.html");
+    return true;
+  }
+
+  return false;
+};
+
 // ── Stripe Links ──
 const applyStripeLinks = () => {
   const stripeLinks = document.querySelectorAll("[data-stripe-link]");
@@ -105,8 +209,14 @@ const applyStripeLinks = () => {
 // ── Lead Forms (Supabase) ──
 const bindLeadForms = () => {
   const leadForms = document.querySelectorAll("[data-lead-form]");
+  if (!leadForms.length) return;
+
+  console.log(`[lead_capture:init] Found ${leadForms.length} lead form(s).`);
 
   leadForms.forEach((form) => {
+    if (form.dataset.leadBound === "true") return;
+    form.dataset.leadBound = "true";
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const submitButton = form.querySelector('button[type="submit"]');
@@ -134,29 +244,17 @@ const bindLeadForms = () => {
           submitButton.innerText = "Sending...";
         }
 
-        if (!supabase) {
-          console.error(
-            "[lead_capture:missing_config] Supabase client not initialized. Redirecting anyway."
-          );
-        } else {
-          const { error } = await withTimeout(
-            supabase.from("leads").insert([
-              {
-                name: normalizedName,
-                email: normalizedEmail,
-              },
-            ]),
-            LEAD_INSERT_TIMEOUT_MS
-          );
-
-          if (error) {
-            console.error(
-              `[lead_capture:insert_failed] ${formatErrorMessage(error)}`,
-              error
-            );
-          }
-        }
+        await insertLeadRecord({
+          name: normalizedName,
+          email: normalizedEmail,
+          source: "form_submit",
+        });
       } catch (error) {
+        if (error && error.reasonCode === "missing_config") {
+          console.error("[lead_capture:missing_config] Missing Supabase runtime config.");
+        } else if (error && error.reasonCode === "insert_failed") {
+          console.error(`[lead_capture:insert_failed] ${formatErrorMessage(error)}`, error);
+        } else
         if (error && error.reasonCode === "timeout") {
           console.error(
             `[lead_capture:timeout] Insert timed out after ${LEAD_INSERT_TIMEOUT_MS}ms.`,
@@ -175,7 +273,7 @@ const bindLeadForms = () => {
         }
         window.location.href = redirectTarget;
       }
-    });
+    }, true);
   });
 };
 
@@ -226,7 +324,14 @@ const initSmoothScroll = () => {
 };
 
 // ── Init ──
-applyStripeLinks();
-bindLeadForms();
-initScrollAnimations();
-initSmoothScroll();
+const init = async () => {
+  applyStripeLinks();
+  const rescued = await rescueNativeLeadSubmission();
+  if (rescued) return;
+
+  bindLeadForms();
+  initScrollAnimations();
+  initSmoothScroll();
+};
+
+init();
