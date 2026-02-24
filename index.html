@@ -158,7 +158,7 @@
         </div>
 
         <!-- Form: stacked on mobile, inline on desktop -->
-        <form class="flex flex-col gap-3 max-w-md mx-auto lg:mx-0" data-lead-form data-redirect="thank-you.html"
+        <form class="flex flex-col gap-3 max-w-md mx-auto lg:mx-0" data-lead-form data-auth-otp="true" data-redirect="thank-you.html"
           action="thank-you.html" method="get">
           <input name="name" type="hidden" value="Interested Player" />
           <input name="email"
@@ -505,7 +505,7 @@
 
       <!-- Mobile: simple email-only form / Desktop: full form with name -->
       <div class="md:hidden">
-        <form class="space-y-4 text-left glass p-6 rounded-2xl" id="lead-mobile" data-lead-form
+        <form class="space-y-4 text-left glass p-6 rounded-2xl" id="lead-mobile" data-lead-form data-auth-otp="true"
           data-redirect="thank-you.html" action="thank-you.html" method="get">
           <input name="name" type="hidden" value="Interested Player" />
           <div>
@@ -523,7 +523,7 @@
       </div>
 
       <div class="hidden md:block max-w-lg mx-auto bg-surface-dark p-8 rounded-2xl border border-white/10 shadow-2xl">
-        <form id="lead" class="space-y-4" data-lead-form data-redirect="thank-you.html" action="thank-you.html"
+        <form id="lead" class="space-y-4" data-lead-form data-auth-otp="true" data-redirect="thank-you.html" action="thank-you.html"
           method="get">
           <div class="text-left">
             <label class="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-widest">Full Name</label>
@@ -568,8 +568,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/config.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/config.js?v=20260223a"></script>
+  <script src="js/script.js?v=20260223a"></script>
 </body>
 
 </html>

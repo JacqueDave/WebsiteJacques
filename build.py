@@ -22,7 +22,7 @@ idx_code = idx_code.replace(
             Access Guide
           </button>
 </div>''',
-    '''<form class="flex flex-col sm:flex-row gap-3 max-w-md" data-lead-form data-redirect="thank-you.html">
+    '''<form class="flex flex-col sm:flex-row gap-3 max-w-md" data-lead-form data-auth-otp="true" data-redirect="thank-you.html">
 <input name="name" type="hidden" value="Interested Player"/>
 <input name="email" class="flex-1 bg-white/5 border border-white/10 rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="Enter your email" type="email" required/>
 <button type="submit" class="bg-primary text-background-dark px-8 py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-white transition-all whitespace-nowrap">
@@ -34,7 +34,7 @@ idx_code = idx_code.replace(
 # Bottom Form
 idx_code = idx_code.replace(
     '''<form class="space-y-4">''',
-    '''<form id="lead" class="space-y-4" data-lead-form data-redirect="thank-you.html">'''
+    '''<form id="lead" class="space-y-4" data-lead-form data-auth-otp="true" data-redirect="thank-you.html">'''
 )
 idx_code = idx_code.replace(
     '''<input class="w-full bg-background-dark border border-white/10 rounded-lg px-4 py-3 focus:ring-primary focus:border-primary outline-none" placeholder="John Doe" type="text"/>''',

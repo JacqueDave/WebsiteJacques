@@ -98,7 +98,7 @@
           <a href="#" data-stripe-link aria-disabled="true"
             class="group w-full bg-primary text-background-dark h-16 rounded-xl font-oswald text-xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(183,217,89,0.3)] hover:shadow-[0_0_30px_rgba(183,217,89,0.5)]">
             <span class="material-symbols-outlined">lock</span>
-            Pay with Stripe - $109
+            Pay with Stripe - $129
           </a>
           <p class="text-center text-[10px] text-slate-500 uppercase tracking-widest mt-4">Secure 1-click checkout</p>
         </div>
@@ -205,25 +205,25 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/config.js"></script>
+  <script src="js/config.js?v=20260223a"></script>
   <script>
-    (() => {
-      const config = window.RUNTIME_CONFIG || {};
-      const stripeUrl = [
-        config.STRIPE_CHECKOUT_URL,
-        config.NEXT_PUBLIC_STRIPE_CHECKOUT_URL,
-        config.VITE_STRIPE_CHECKOUT_URL,
-        config.PUBLIC_STRIPE_CHECKOUT_URL,
-      ].find((value) => typeof value === "string" && value.trim());
+      (() => {
+        const config = window.RUNTIME_CONFIG || {};
+        const stripeUrl = [
+          config.STRIPE_CHECKOUT_URL,
+          config.NEXT_PUBLIC_STRIPE_CHECKOUT_URL,
+          config.VITE_STRIPE_CHECKOUT_URL,
+          config.PUBLIC_STRIPE_CHECKOUT_URL,
+        ].find((value) => typeof value === "string" && value.trim());
 
-      const stripeLink = document.querySelector("[data-stripe-link]");
-      if (!stripeLink || !stripeUrl) return;
+        const stripeLink = document.querySelector("[data-stripe-link]");
+        if (!stripeLink || !stripeUrl) return;
 
-      stripeLink.href = stripeUrl.trim();
-      stripeLink.removeAttribute("aria-disabled");
-    })();
+        stripeLink.href = stripeUrl.trim();
+        stripeLink.removeAttribute("aria-disabled");
+      })();
   </script>
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=20260223a"></script>
 </body>
 
 </html>

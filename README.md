@@ -67,3 +67,16 @@ deploy and keep `.env` out of the published folder.
 
 1. Run `setup_leads_table.sql` in the target Supabase project.
 2. Confirm `public.leads` exists, RLS is enabled, and insert policy `leads_insert_anon_authenticated` is present.
+3. In Supabase Dashboard -> Auth -> Sign In / Providers, ensure Email provider is enabled.
+4. If you expect numeric OTP codes (not magic links), configure the email template to include the OTP token.
+5. Check Auth -> URL Configuration and ensure your deployed domain is allowed.
+
+## Lead capture troubleshooting (nothing appears in Supabase)
+
+1. Open DevTools -> Network and submit the form.
+2. Inspect `POST /rest/v1/leads`.
+3. If response is `401` with `permission denied for table leads`, run `setup_leads_table.sql` in the same Supabase project and confirm both verification queries return expected results.
+4. If response says `relation "leads" does not exist`, create table by running `setup_leads_table.sql`.
+5. If request fails before response (`Failed to fetch`), verify domain/CORS configuration and that `SUPABASE_URL` + `SUPABASE_ANON_KEY` point to the same project.
+
+Tip: `js/script.js` now surfaces a direct on-page message when Supabase permissions are missing for `public.leads`.
